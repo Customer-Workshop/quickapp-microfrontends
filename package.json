@@ -2,7 +2,7 @@
   "name": "decomposition-microfrontends",
   "version": "0.0.1",
   "private": true,
-  "description": "Angular micro-frontends target state \u2014 shell + remote apps using Webpack Module Federation",
+  "description": "Angular micro-frontends target state — shell + remote apps using Webpack Module Federation",
   "scripts": {
     "start:all": "concurrently \"npm run start:shell\" \"npm run start:identity\" \"npm run start:customer\" \"npm run start:order\" \"npm run start:product\"",
     "start:shell": "cd apps/shell && npm start",
