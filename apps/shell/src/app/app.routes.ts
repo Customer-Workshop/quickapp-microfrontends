@@ -47,4 +47,8 @@ export const APP_ROUTES: Routes = [
         exposedModule: './routes',
       }).then(m => m.REMOTE_ROUTES),
   },
+  {
+    path: '**',
+    redirectTo: 'home',
+  },
 ];

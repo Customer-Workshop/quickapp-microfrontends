@@ -2,7 +2,7 @@
   "name": "decomposition-microfrontends",
   "version": "0.0.1",
   "private": true,
-  "description": "Angular micro-frontends target state — shell + remote apps using Webpack Module Federation",
+  "description": "Angular micro-frontends target state \u2014 shell + remote apps using Webpack Module Federation",
   "scripts": {
     "start:all": "concurrently \"npm run start:shell\" \"npm run start:identity\" \"npm run start:customer\" \"npm run start:order\" \"npm run start:product\"",
     "start:shell": "cd apps/shell && npm start",
@@ -15,9 +15,12 @@
     "build:identity": "cd apps/identity-mfe && npm run build",
     "build:customer": "cd apps/customer-mfe && npm run build",
     "build:order": "cd apps/order-mfe && npm run build",
-    "build:product": "cd apps/product-mfe && npm run build"
+    "build:product": "cd apps/product-mfe && npm run build",
+    "install:all": "npm ci && (cd apps/shell && npm ci) && (cd apps/identity-mfe && npm ci) && (cd apps/customer-mfe && npm ci) && (cd apps/order-mfe && npm ci) && (cd apps/product-mfe && npm ci)",
+    "test:e2e": "playwright test -c e2e/playwright.config.ts"
   },
   "devDependencies": {
-    "concurrently": "^9.0.0"
+    "concurrently": "^9.0.0",
+    "@playwright/test": "1.63.0"
   }
 }

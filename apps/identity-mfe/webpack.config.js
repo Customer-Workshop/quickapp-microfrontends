@@ -1,26 +1,9 @@
-const { ModuleFederationPlugin } = require('webpack').container;
+const { withModuleFederationPlugin, shareAll } = require('@angular-architects/module-federation/webpack');
 
-module.exports = {
-  output: {
-    uniqueName: 'identitymfe',
-    publicPath: 'auto',
+module.exports = withModuleFederationPlugin({
+  name: 'identitymfe',
+  exposes: {
+    './routes': './src/app/remote-entry.routes.ts',
   },
-  optimization: {
-    runtimeChunk: false,
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'identitymfe',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './routes': './src/app/remote-entry.routes.ts',
-      },
-      shared: {
-        '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-      },
-    }),
-  ],
-};
+  shared: shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+});

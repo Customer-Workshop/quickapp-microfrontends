@@ -101,8 +101,8 @@ libs/
 ## Getting Started
 
 ```bash
-# Install dependencies
-npm install
+# Install dependencies (root + all five apps)
+npm run install:all
 
 # Run shell + all remotes locally
 npm run start:all
@@ -110,6 +110,19 @@ npm run start:all
 # Run individual MFE
 cd apps/shell && npm start
 cd apps/identity-mfe && npm start
+```
+
+## Testing
+
+End-to-end tests use [Playwright](https://playwright.dev) and live under
+[`e2e/`](e2e/). They cover the shell layout, remote list/detail navigation,
+`remoteEntry.js` availability, and fallback routing. See
+[`e2e/README.md`](e2e/README.md) for setup and usage.
+
+```bash
+npm run install:all
+npx playwright install chromium
+npm run test:e2e
 ```
 
 ## Related Repositories
